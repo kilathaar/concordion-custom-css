@@ -62,6 +62,7 @@
 					<systemPropertyVariables>
 						<concordion.output.dir>target/concordion</concordion.output.dir>
 					</systemPropertyVariables>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 		</plugins>
