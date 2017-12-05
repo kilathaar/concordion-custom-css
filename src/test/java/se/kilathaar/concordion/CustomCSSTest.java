@@ -2,6 +2,10 @@ package se.kilathaar.concordion;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 public class CustomCSSTest {
@@ -12,6 +16,8 @@ public class CustomCSSTest {
 			fail("Did not throw expected exception");
 		} catch (NullPointerException e) {
 			// Nothing to do, expected exception was thrown
+		} catch (IOException e) {
+			fail("Did not throw expected exception, caught IOException");
 		}
 	}
 
@@ -22,6 +28,8 @@ public class CustomCSSTest {
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
+		} catch (IOException e) {
+			fail("Did not throw expected exception, caught IOException");
 		}
 	}
 
@@ -32,6 +40,18 @@ public class CustomCSSTest {
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
+		} catch (IOException e) {
+			fail("Did not throw expected exception, caught IOException");
 		}
+	}
+
+	@Test
+	public void should_find_property_assert_true_success() throws IOException {
+		assertThat(new CustomCSS("/example.properties").properties().getProperty("assert_true.success"), is("custom-success"));
+	}
+
+	@Test
+	public void should_find_property_assert_true_failure() throws IOException {
+		assertThat(new CustomCSS("/example.properties").properties().getProperty("assert_true.failure"), is("custom-failure"));
 	}
 }
