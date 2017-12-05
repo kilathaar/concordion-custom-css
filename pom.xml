@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.6</java.version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +42,20 @@
 					<compilerArgs>
 						<arg>-Xlint:all</arg>
 					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20.1</version>
+				<configuration>
+					<includes>
+						<include>**.*Test.java</include>
+						<include>**.*Fixture.java</include>
+					</includes>
+					<systemPropertyVariables>
+						<concordion.output.dir>target/concordion</concordion.output.dir>
+					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>
