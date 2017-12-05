@@ -19,8 +19,6 @@ public class ReadPropertyFileTest {
 			fail("Did not throw expected exception");
 		} catch (NullPointerException e) {
 			// Nothing to do, expected exception was thrown
-		} catch (IOException e) {
-			fail("Did not throw expected exception, caught IOException");
 		}
 	}
 
@@ -31,8 +29,6 @@ public class ReadPropertyFileTest {
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
-		} catch (IOException e) {
-			fail("Did not throw expected exception, caught IOException");
 		}
 	}
 
@@ -43,8 +39,6 @@ public class ReadPropertyFileTest {
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
-		} catch (IOException e) {
-			fail("Did not throw expected exception, caught IOException");
 		}
 	}
 

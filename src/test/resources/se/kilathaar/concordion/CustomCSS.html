@@ -1,0 +1,20 @@
+<html lang="en" xmlns:concordion="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010">
+<head>
+	<title>Concordion Custom CSS</title>
+</head>
+<body>
+<p>Given CustomCSS extension uses the following CSS:</p>
+<pre ext:embed="readCSS()"></pre>
+
+<div concordion:example="assert-true: success">
+	<h2>assert-true: success</h2>
+	<p>Method returned <span concordion:assert-true="returnTrue()">true</span></p>
+</div>
+
+<div concordion:example="assert-true: failure">
+	<h2>assert-true: failure</h2>
+	<p>Method returned <span concordion:assert-true="returnFalse()">false</span></p>
+</div>
+
+</body>
+</html>

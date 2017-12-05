@@ -1,0 +1,9 @@
+.custom-success {
+	color: darkgreen;
+	background-color: aquamarine;
+}
+
+.custom-failure {
+	color:darkred;
+	background-color: crimson;
+}
