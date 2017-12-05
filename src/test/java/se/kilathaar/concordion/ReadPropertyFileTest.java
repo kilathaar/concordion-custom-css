@@ -9,13 +9,13 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-public class CustomCSSTest {
-	private CustomCSS extension;
+public class ReadPropertyFileTest {
+	private ReadPropertyFile reader;
 
 	@Test
 	public void should_cast_NullPointerException_when_fileName_is_null() {
 		try {
-			new CustomCSS(null);
+			new ReadPropertyFile(null);
 			fail("Did not throw expected exception");
 		} catch (NullPointerException e) {
 			// Nothing to do, expected exception was thrown
@@ -27,7 +27,7 @@ public class CustomCSSTest {
 	@Test
 	public void should_cast_IllegalArgumentException_when_fileName_is_empty() {
 		try {
-			new CustomCSS("");
+			new ReadPropertyFile("");
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
@@ -39,7 +39,7 @@ public class CustomCSSTest {
 	@Test
 	public void should_cast_IllegalArgumentException_when_fileName_is_whitespace() {
 		try {
-			new CustomCSS(" ");
+			new ReadPropertyFile(" ");
 			fail("Did not throw expected exception");
 		} catch (IllegalArgumentException e) {
 			// Nothing to do, expected exception was thrown
@@ -49,17 +49,17 @@ public class CustomCSSTest {
 	}
 
 	@Before
-	public void given_instance_of_CustomCSS() throws IOException {
-		extension = new CustomCSS("/example.properties");
+	public void given_instance_of_ReadPropertyFile() throws IOException {
+		reader = new ReadPropertyFile("/example.properties");
 	}
 
 	@Test
 	public void should_find_property_assert_true_success() throws IOException {
-		assertThat(extension.properties().getProperty("assert_true.success"), is("custom-success"));
+		assertThat(reader.properties().getProperty("assert_true.success"), is("custom-success"));
 	}
 
 	@Test
 	public void should_find_property_assert_true_failure() throws IOException {
-		assertThat(extension.properties().getProperty("assert_true.failure"), is("custom-failure"));
+		assertThat(reader.properties().getProperty("assert_true.failure"), is("custom-failure"));
 	}
 }
