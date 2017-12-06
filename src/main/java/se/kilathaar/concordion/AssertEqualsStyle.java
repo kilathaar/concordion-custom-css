@@ -6,20 +6,21 @@ import org.concordion.api.listener.AssertSuccessEvent;
 
 import java.util.Properties;
 
-public class AssertEqualsStyle extends StyleCSS implements AssertEqualsListener {
-	private static final String key = "assert_equals";
+public class AssertEqualsStyle implements AssertEqualsListener {
+	private final String key = "assert_equals";
+	private final Properties properties;
 
 	AssertEqualsStyle(Properties properties) {
-		super(properties);
+		this.properties = properties;
 	}
 
 	@Override
 	public void successReported(AssertSuccessEvent assertSuccessEvent) {
-		styleSuccess(assertSuccessEvent.getElement(), key);
+		assertSuccessEvent.getElement().addStyleClass(properties.getProperty(key + ".success"));
 	}
 
 	@Override
 	public void failureReported(AssertFailureEvent assertFailureEvent) {
-		styleFailure(assertFailureEvent.getElement(), key);
+		assertFailureEvent.getElement().addStyleClass(properties.getProperty(key + ".failure"));
 	}
 }

@@ -5,11 +5,12 @@ import org.concordion.api.listener.*;
 
 import java.util.Properties;
 
-public class RunStyle extends StyleCSS implements RunListener {
+public class RunStyle implements RunListener {
 	private static final String key = "run";
+	private final Properties properties;
 
 	RunStyle(Properties properties) {
-		super(properties);
+		this.properties = properties;
 	}
 
 	@Override
@@ -19,12 +20,12 @@ public class RunStyle extends StyleCSS implements RunListener {
 
 	@Override
 	public void successReported(RunSuccessEvent runSuccessEvent) {
-		styleSuccess(runSuccessEvent.getElement(), key);
+		runSuccessEvent.getElement().addStyleClass(properties.getProperty(key + ".success"));
 	}
 
 	@Override
 	public void failureReported(RunFailureEvent runFailureEvent) {
-		styleFailure(runFailureEvent.getElement(), key);
+		runFailureEvent.getElement().addStyleClass(properties.getProperty(key + ".failure"));
 	}
 
 	@Override

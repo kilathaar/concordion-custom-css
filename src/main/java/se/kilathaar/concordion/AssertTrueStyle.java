@@ -6,20 +6,21 @@ import org.concordion.api.listener.AssertTrueListener;
 
 import java.util.Properties;
 
-public class AssertTrueStyle extends StyleCSS implements AssertTrueListener {
-	private static final String key = "assert_true";
+public class AssertTrueStyle implements AssertTrueListener {
+	private final String key = "assert_true";
+	private final Properties properties;
 
 	AssertTrueStyle(Properties properties) {
-		super(properties);
+		this.properties = properties;
 	}
 
 	@Override
 	public void successReported(AssertSuccessEvent assertSuccessEvent) {
-		styleSuccess(assertSuccessEvent.getElement(), key);
+		assertSuccessEvent.getElement().addStyleClass(properties.getProperty(key + ".success"));
 	}
 
 	@Override
 	public void failureReported(AssertFailureEvent assertFailureEvent) {
-		styleFailure(assertFailureEvent.getElement(), key);
+		assertFailureEvent.getElement().addStyleClass(properties.getProperty(key + ".failure"));
 	}
 }
