@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 @RunWith(ConcordionRunner.class)
-@Extensions({CustomCSS.class, EmbedExtension.class})
+@Extensions({CustomStyle.class, EmbedExtension.class})
 @ConcordionResources(includeDefaultStyling = false)
 abstract public class ConcordionTest {
 	public String readCSS() throws FileNotFoundException {

@@ -7,12 +7,12 @@ import org.concordion.api.listener.*;
 
 import java.util.Properties;
 
-public class CustomCSS implements ConcordionExtension {
+public class CustomStyle implements ConcordionExtension {
 	private final Properties properties;
 	private final String success = ".success";
 	private final String failure = ".failure";
 
-	public CustomCSS() {
+	public CustomStyle() {
 		properties = new ReadPropertyFile("/custom-css.properties").properties();
 	}
 
