@@ -6,35 +6,11 @@
 <p>Given CustomCSS extension uses the following CSS:</p>
 <pre ext:embed="readCSS()"></pre>
 
-<div concordion:example="assert-true: success">
-	<h2>assert-true: success</h2>
-	<p>Method returned <span concordion:assert-true="returnTrue()">true</span></p>
-</div>
-
-<div concordion:example="assert-true: failure">
-	<h2>assert-true: failure</h2>
-	<p>Method returned <span concordion:assert-true="returnFalse()">false</span></p>
-</div>
-
-<div concordion:example="assert-false: success">
-	<h2>assert-false: success</h2>
-	<p>Method returned <span concordion:assert-false="returnFalse()">true</span></p>
-</div>
-
-<div concordion:example="assert-false: failure">
-	<h2>assert-false: failure</h2>
-	<p>Method returned <span concordion:assert-false="returnTrue()">false</span></p>
-</div>
-
-<div concordion:example="assert-equals: success">
-	<h2>assert-equals: success</h2>
-	<p>Method returned <span concordion:assert-equals="returnEqual()">equal</span></p>
-</div>
-
-<div concordion:example="assert-equals: failure">
-	<h2>assert-equals: failure</h2>
-	<p>Method returned <span concordion:assert-equals="returnNotEqual()">equal</span></p>
-</div>
+<ul>
+	<li><a concordion:run="concordion" href="AssertTrueCSS.html">Example demonstrating <code>assert-true</code></a></li>
+	<li><a concordion:run="concordion" href="AssertFalseCSS.html">Example demonstrating <code>assert-false</code></a></li>
+	<li><a concordion:run="concordion" href="AssertEqualsCSS.html">Example demonstrating <code>assert-equals</code></a></li>
+</ul>
 
 </body>
 </html>

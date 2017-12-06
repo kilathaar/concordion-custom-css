@@ -4,7 +4,6 @@ import org.concordion.api.extension.ConcordionExtender;
 import org.concordion.api.extension.ConcordionExtension;
 
 public class CustomCSS implements ConcordionExtension {
-
 	private final String filename = "/custom-css.properties";
 
 	@SuppressWarnings("unused")
@@ -13,5 +12,6 @@ public class CustomCSS implements ConcordionExtension {
 		concordionExtender.withAssertTrueListener(new AssertTrueCSS(filename));
 		concordionExtender.withAssertFalseListener(new AssertFalseCSS(filename));
 		concordionExtender.withAssertEqualsListener(new AssertEqualsCSS(filename));
+		concordionExtender.withRunListener(new RunCSS(filename));
 	}
 }

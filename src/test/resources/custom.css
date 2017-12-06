@@ -7,3 +7,13 @@
 	color:darkred;
 	background-color: crimson;
 }
+
+.custom-run-success {
+	color: darkgreen;
+	background-color: aquamarine;
+}
+
+.custom-run-failure {
+	color:darkred;
+	background-color: crimson;
+}
