@@ -4,20 +4,20 @@ import org.concordion.api.listener.AssertEqualsListener;
 import org.concordion.api.listener.AssertFailureEvent;
 import org.concordion.api.listener.AssertSuccessEvent;
 
-public class AssertEqualsCSS implements AssertEqualsListener {
-	private final ReadPropertyFile read;
+public class AssertEqualsStyle extends StyleCSS implements AssertEqualsListener {
+	private static final String key = "assert_equals";
 
-	AssertEqualsCSS(String filename) {
-		read = new ReadPropertyFile(filename);
+	AssertEqualsStyle(String filename) {
+		super(filename);
 	}
 
 	@Override
 	public void successReported(AssertSuccessEvent assertSuccessEvent) {
-		assertSuccessEvent.getElement().addStyleClass(read.property("assert_equals.success"));
+		styleSuccess(assertSuccessEvent.getElement(), key);
 	}
 
 	@Override
 	public void failureReported(AssertFailureEvent assertFailureEvent) {
-		assertFailureEvent.getElement().addStyleClass(read.property("assert_equals.failure"));
+		styleFailure(assertFailureEvent.getElement(), key);
 	}
 }

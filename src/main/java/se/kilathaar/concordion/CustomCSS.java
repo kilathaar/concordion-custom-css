@@ -9,9 +9,9 @@ public class CustomCSS implements ConcordionExtension {
 	@SuppressWarnings("unused")
 	@Override
 	public void addTo(ConcordionExtender concordionExtender) {
-		concordionExtender.withAssertTrueListener(new AssertTrueCSS(filename));
-		concordionExtender.withAssertFalseListener(new AssertFalseCSS(filename));
-		concordionExtender.withAssertEqualsListener(new AssertEqualsCSS(filename));
-		concordionExtender.withRunListener(new RunCSS(filename));
+		concordionExtender.withAssertTrueListener(new AssertTrueStyle(filename));
+		concordionExtender.withAssertFalseListener(new AssertFalseStyle(filename));
+		concordionExtender.withAssertEqualsListener(new AssertEqualsStyle(filename));
+		concordionExtender.withRunListener(new RunStyle(filename));
 	}
 }

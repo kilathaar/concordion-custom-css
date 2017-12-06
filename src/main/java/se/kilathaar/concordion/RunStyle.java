@@ -3,31 +3,31 @@ package se.kilathaar.concordion;
 import org.concordion.api.Element;
 import org.concordion.api.listener.*;
 
-public class RunCSS implements RunListener {
-	private final ReadPropertyFile read;
+public class RunStyle extends StyleCSS implements RunListener {
+	private static final String key = "run";
 
-	RunCSS(String filename) {
-		read = new ReadPropertyFile(filename);
+	RunStyle(String filename) {
+		super(filename);
 	}
 
 	@Override
 	public void runStarted(RunStartedEvent runStartedEvent) {
-		runStartedEvent.getElement().addStyleClass(read.property("run.started"));
+		runStartedEvent.getElement().addStyleClass(read.property(key + ".started"));
 	}
 
 	@Override
 	public void successReported(RunSuccessEvent runSuccessEvent) {
-		runSuccessEvent.getElement().addStyleClass(read.property("run.success"));
+		styleSuccess(runSuccessEvent.getElement(), key);
 	}
 
 	@Override
 	public void failureReported(RunFailureEvent runFailureEvent) {
-		runFailureEvent.getElement().addStyleClass(read.property("run.failure"));
+		styleFailure(runFailureEvent.getElement(), key);
 	}
 
 	@Override
 	public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
-		runIgnoreEvent.getElement().addStyleClass(read.property("run.ignore"));
+		runIgnoreEvent.getElement().addStyleClass(read.property(key + ".ignore"));
 	}
 
 	@Override
