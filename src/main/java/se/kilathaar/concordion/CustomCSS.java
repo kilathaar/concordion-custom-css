@@ -11,5 +11,6 @@ public class CustomCSS implements ConcordionExtension {
 	@Override
 	public void addTo(ConcordionExtender concordionExtender) {
 		concordionExtender.withAssertTrueListener(new AssertTrueCSS(filename));
+		concordionExtender.withAssertFalseListener(new AssertFalseCSS(filename));
 	}
 }
