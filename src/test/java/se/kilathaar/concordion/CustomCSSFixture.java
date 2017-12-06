@@ -32,4 +32,12 @@ public class CustomCSSFixture {
 	public boolean returnFalse() {
 		return false;
 	}
+
+	public String returnEqual() {
+		return "equal";
+	}
+
+	public String returnNotEqual() {
+		return "not equal";
+	}
 }
