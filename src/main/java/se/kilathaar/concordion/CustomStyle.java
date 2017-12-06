@@ -9,88 +9,82 @@ import java.util.Properties;
 
 public class CustomStyle implements ConcordionExtension {
 	private final Properties properties;
-	private final String success = ".success";
-	private final String failure = ".failure";
 
 	public CustomStyle() {
 		properties = new ReadPropertyFile("/custom-css.properties").properties();
 	}
 
 	@Override
-	public void addTo(ConcordionExtender concordionExtender) {
-		styleAssertTrueEvents(concordionExtender);
-		styleAssertFalseEvents(concordionExtender);
-		styleAssertEqualsEvents(concordionExtender);
-		styleRunEvents(concordionExtender);
-		concordionExtender.withLinkedCSS(properties.getProperty("linked_css_file"), new Resource(properties.getProperty("linked_css_file")));
-		concordionExtender.withLinkedJavaScript(properties.getProperty("linked_javascript_file"), new Resource(properties.getProperty("linked_javascript_file")));
+	public void addTo(ConcordionExtender extender) {
+		styleAssertTrueEvents(extender);
+		styleAssertFalseEvents(extender);
+		styleAssertEqualsEvents(extender);
+		styleRunEvents(extender);
+		extender.withLinkedCSS(fromProperty("css_file"), new Resource(fromProperty("css_file")));
+		extender.withLinkedJavaScript(fromProperty("javascript_file"), new Resource(fromProperty("javascript_file")));
 	}
 
-	private void styleRunEvents(ConcordionExtender concordionExtender) {
-		concordionExtender.withRunListener(new RunListener() {
-			private static final String key = "run";
-
+	private void styleRunEvents(ConcordionExtender extender) {
+		extender.withRunListener(new RunListener() {
 			public void runStarted(RunStartedEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + ".started"));
+				event.getElement().addStyleClass(fromProperty("run.started"));
 			}
 
 			public void successReported(RunSuccessEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + success));
+				event.getElement().addStyleClass(fromProperty("run.success"));
 			}
 
 			public void failureReported(RunFailureEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + failure));
+				event.getElement().addStyleClass(fromProperty("run.failure"));
 			}
 
 			public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
-				runIgnoreEvent.getElement().addStyleClass(properties.getProperty(key + ".ignore"));
+				runIgnoreEvent.getElement().addStyleClass(fromProperty("run.ignore"));
 			}
 
 			public void throwableCaught(ThrowableCaughtEvent event) {
-				event.getElement().addStyleClass(properties.getProperty("throwable.caught"));
+				event.getElement().addStyleClass(fromProperty("throwable.caught"));
 			}
 		});
 	}
 
-	private void styleAssertEqualsEvents(ConcordionExtender concordionExtender) {
-		concordionExtender.withAssertEqualsListener(new AssertEqualsListener() {
-			private final String key = "assert_equals";
-
+	private void styleAssertEqualsEvents(ConcordionExtender extender) {
+		extender.withAssertEqualsListener(new AssertEqualsListener() {
 			public void successReported(AssertSuccessEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + success));
+				event.getElement().addStyleClass(fromProperty("assert_equals.success"));
 			}
 
 			public void failureReported(AssertFailureEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + failure));
+				event.getElement().addStyleClass(fromProperty("assert_equals.failure"));
 			}
 		});
 	}
 
-	private void styleAssertFalseEvents(ConcordionExtender concordionExtender) {
-		concordionExtender.withAssertFalseListener(new AssertFalseListener() {
-			private final String key = "assert_false";
-
+	private void styleAssertFalseEvents(ConcordionExtender extender) {
+		extender.withAssertFalseListener(new AssertFalseListener() {
 			public void successReported(AssertSuccessEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + success));
+				event.getElement().addStyleClass(fromProperty("assert_false.success"));
 			}
 
 			public void failureReported(AssertFailureEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + failure));
+				event.getElement().addStyleClass(fromProperty("assert_false.failure"));
 			}
 		});
 	}
 
-	private void styleAssertTrueEvents(ConcordionExtender concordionExtender) {
-		concordionExtender.withAssertTrueListener(new AssertTrueListener() {
-			private final String key = "assert_true";
-
+	private void styleAssertTrueEvents(ConcordionExtender extender) {
+		extender.withAssertTrueListener(new AssertTrueListener() {
 			public void successReported(AssertSuccessEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + success));
+				event.getElement().addStyleClass(fromProperty("assert_true.success"));
 			}
 
 			public void failureReported(AssertFailureEvent event) {
-				event.getElement().addStyleClass(properties.getProperty(key + failure));
+				event.getElement().addStyleClass(fromProperty("assert_true.failure"));
 			}
 		});
+	}
+
+	private String fromProperty(String key) {
+		return properties.getProperty(key);
 	}
 }
