@@ -4,11 +4,13 @@ import org.concordion.api.listener.AssertEqualsListener;
 import org.concordion.api.listener.AssertFailureEvent;
 import org.concordion.api.listener.AssertSuccessEvent;
 
+import java.util.Properties;
+
 public class AssertEqualsStyle extends StyleCSS implements AssertEqualsListener {
 	private static final String key = "assert_equals";
 
-	AssertEqualsStyle(String filename) {
-		super(filename);
+	AssertEqualsStyle(Properties properties) {
+		super(properties);
 	}
 
 	@Override

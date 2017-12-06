@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @RunWith(ConcordionRunner.class)
 @Extensions({CustomCSS.class, EmbedExtension.class})
-@ConcordionResources(includeDefaultStyling = false, value = {"/custom.css"})
+@ConcordionResources(includeDefaultStyling = false)
 abstract public class ConcordionTest {
 	public String readCSS() throws FileNotFoundException {
 		String path = "src/test/resources/custom.css";

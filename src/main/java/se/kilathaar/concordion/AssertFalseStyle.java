@@ -4,11 +4,13 @@ import org.concordion.api.listener.AssertFailureEvent;
 import org.concordion.api.listener.AssertFalseListener;
 import org.concordion.api.listener.AssertSuccessEvent;
 
+import java.util.Properties;
+
 public class AssertFalseStyle extends StyleCSS implements AssertFalseListener {
 	private static final String key = "assert_false";
 
-	AssertFalseStyle(String filename) {
-		super(filename);
+	AssertFalseStyle(Properties properties) {
+		super(properties);
 	}
 
 	@Override
